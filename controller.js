@@ -1,3 +1,3 @@
-app.controller('controller', ['$scope',function($scope){
-  $scope.test = 'Hello world!';
+app.controller('controller', ['$scope','blockService',function($scope, blockService){
+  $scope.test = blockService.test;
  }]);

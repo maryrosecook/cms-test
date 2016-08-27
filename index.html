@@ -17,13 +17,19 @@
 
   <!-- Content -->
   <div class="well">
-    <p class="lead text-muted">
-      {{ test }}
-    </p>
+    <div ng-repeat="article in finalArticle" class="lead text-muted">
+      <h4> {{ article.title }} </h4>
+      <p> {{ article.body }} </p>
+    </div>
   </div>
 
   <!-- Add Blocks -->
   <h4>Add Block</h4>
+  <div class="form-group">
+    <input class="form-control" placeholder="New collection" type="text" ng-model="titleText"/>
+    <input class="form-control" placeholder="This is our newest collection..." type="text" ng-model="bodyText"/>
+    <button class="btn btn-primary" ng-click="addTextBlock()">   Add Text  </button>
+  </div>
   <a class="btn btn-primary">Text Block</a>
   <a class="btn btn-success">Products Block</a>
 

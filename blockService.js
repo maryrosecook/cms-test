@@ -1,7 +1,28 @@
 app.service('blockService', [function(){
   var self = this;
   self.test = 'Hello world!';
-  self.finalArticle = [];
+  self.json = [];
+  self.blocks = [];
+  self.productArray = [];
+  self.productList = {"type": "products",
+"products": self.productArray};
+
+  self.addTextBlock = function(titleText,bodyText){
+    self.blocks.push({
+      type : "text",
+      title: titleText,
+      body: bodyText
+    });
+    console.log(self.blocks);
+  };
+
+  self.addImageBlock = function(image){
+    self.productArray.push(image);
+      self.blocks.push(self.productList);
+      console.log(self.blocks);
+  };
+
+
   self.products = [{
     "id": 167687,
     "title": "A Kind of Guise Mindelo T-Shirt (White)",
@@ -28,13 +49,5 @@ app.service('blockService', [function(){
     "image": "https://static.grabble.com/products/168013/c1385ee4ba25e9c67cbade7071a9670c.jpg"
   }];
 
-  self.addTextBlock = function(titleText,bodyText){
-    self.finalArticle.push({
-      type : "text",
-      title: titleText,
-      body: bodyText
-    });
-    console.log(self.finalArticle);
-  };
 
 }]);

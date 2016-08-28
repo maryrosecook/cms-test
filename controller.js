@@ -5,4 +5,11 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.addTextBlock = function(block){
     blockService.addTextBlock($scope.bodyText,$scope.titleText);
   };
+
+  $scope.addImageBlock = function(image){
+    blockService.addImageBlock(image);
+  };
+
+  $scope.addImageBlock("hello");
+
  }]);

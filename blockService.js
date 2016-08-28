@@ -4,7 +4,7 @@ app.service('blockService', [function(){
   self.json = [];
   self.blocks = [];
   self.productArray = [];
-  self.productList = {"type": "products",
+  self.productBlock = {"type": "products",
 "products": self.productArray};
 
   self.addTextBlock = function(titleText,bodyText){
@@ -13,13 +13,25 @@ app.service('blockService', [function(){
       title: titleText,
       body: bodyText
     });
-    console.log(self.blocks);
+    self.json.push({
+      type : "text",
+      title: titleText,
+      body: bodyText
+    });
   };
 
-  self.addImageBlock = function(image){
+  self.saveImageBlock = function(){
+    self.json.push(self.productBlock);
+    console.log(self.json);
+}
+
+  self.addImage = function(image){
     self.productArray.push(image);
-      self.blocks.push(self.productList);
-      console.log(self.blocks);
+    self.blocks.push(
+      self.products.filter(function(product){
+        return product.id === image;
+      }));
+      console.log(self.productArray);
   };
 
 

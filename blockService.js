@@ -9,29 +9,30 @@ app.service('blockService', [function(){
 
   self.addTextBlock = function(titleText,bodyText){
     self.blocks.push({
-      type : "text",
-      title: titleText,
-      body: bodyText
+      "type" : "text",
+      "title": titleText,
+      "body": bodyText
     });
     self.json.push({
-      type : "text",
-      title: titleText,
-      body: bodyText
+      "type" : "text",
+      "title": titleText,
+      "body": bodyText
     });
   };
 
   self.saveImageBlock = function(){
     self.json.push(self.productBlock);
     console.log(self.json);
+    console.log(self.blocks);
 }
 
   self.addImage = function(image){
     self.productArray.push(image);
     self.blocks.push(
       self.products.filter(function(product){
-        return product.id === image;
-      }));
-      console.log(self.productArray);
+        return (product.id === image);
+      })
+    );
   };
 
 

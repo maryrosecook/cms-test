@@ -7,6 +7,7 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.textInput = false;
   $scope.showBlock = false;
   $scope.imageSelection = false;
+  $scope.editable = false;
 
   $scope.addTextBlock = function(){
     blockService.addTextBlock($scope.titleText,$scope.bodyText);
@@ -15,6 +16,16 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.addImage = function(image){
     blockService.addImage(image);
   };
+
+  $scope.editBlock = function(block){
+    $scope.editable = true;
+    $scope.textBlock = block;
+  };
+
+  $scope.saveBlock = function(){
+  $scope.textBlock = {};
+  $scope.editable = false;
+}
 
   $scope.saveImageBlock = function(){
     blockService.saveImageBlock();

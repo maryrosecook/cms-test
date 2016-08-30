@@ -21,6 +21,8 @@
       <div class="row" ng-show="textBlock(block)">
         <h4> {{ block.title }} </h4>
         <p> {{ block.body }} </p>
+        <button class="btn btn-default" ng-click="editBlock(block)">Edit!</button>
+        <br>
       </div>
       <div ng-show="!textBlock(block)" class="col-xs-6">
         <div class="row">
@@ -37,7 +39,14 @@
 
     <!-- Text Blocks -->
 
-    <h4>Add Block</h4>
+    <!-- Edit Block -->
+    <form class="form-group" ng-show="editable">
+      <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
+      <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
+      <button class="btn btn-primary" ng-click="saveBlock()">   Save  </button>
+    </form>
+
+    <!-- Add Block -->
     <form class="form-group" ng-show="textInput">
       <input class="form-control" placeholder="Title" type="text" ng-model="titleText"/>
       <input class="form-control" placeholder="Main Body" type="text" ng-model="bodyText"/>
@@ -47,6 +56,9 @@
     <a class="btn btn-primary" ng-click="showTextInput()">Text Block</a>
     <a class="btn btn-success" ng-click="showImageSelection()">Products Block</a>
     <hr>
+
+    <!-- Image Blocks -->
+
     <div ng-show="imageSelection" class="col-xs-12 col-md-8">
       <button ng-click="saveImageBlock(); showImageSelection()">Done</button>
       <div class="row">

@@ -26,7 +26,7 @@ app.service('blockService', [function(){
     console.log(self.blocks);
 }
 
-  self.addImage = function(image){
+  self.createImage = function(image){
     self.productArray.push(image);
     self.blocks.push(
       self.products.filter(function(product){

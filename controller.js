@@ -1,4 +1,4 @@
-app.controller('controller', ['$scope','blockService',function($scope, blockService){
+app.controller('controller', ['$scope','blockService','Popeye',function($scope, blockService, Popeye){
   $scope.test = blockService.test;
   $scope.finalArticle = blockService.finalArticle;
   $scope.allProducts = blockService.products;
@@ -12,6 +12,8 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
 
   $scope.addTextBlock = function(){
     blockService.addTextBlock($scope.titleText,$scope.bodyText);
+    $scope.titleText = '';
+    $scope.bodyText = '';
   };
 
   $scope.addImage = function(image){
@@ -23,21 +25,15 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
     $scope.textBlock = block;
   };
 
-  $scope.openModal = function(){
-    var modal = Popeye.openModal({
-      templateUrl: "my_modal.html"
-    });
-  };
-
   $scope.saveBlock = function(){
     $scope.textBlock = {};
     $scope.editable = false;
-  }
+  };
 
   $scope.deleteImage = function(image){
     var index = $scope.blocks.indexOf(image);
     $scope.blocks.splice(index, 1)
-  }
+  };
 
   $scope.saveImageBlock = function(){
     blockService.saveImageBlock();
@@ -65,6 +61,12 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
     if ($scope.showButtons === false){
       $scope.showButtons = true;
     } else {$scope.showButtons = false};
+  };
+
+  $scope.openModal = function(){
+    var modal = Popeye.openModal({
+      templateUrl: "my_modal.html"
+    });
   };
 
 

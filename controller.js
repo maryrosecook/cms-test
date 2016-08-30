@@ -30,6 +30,11 @@ app.controller('controller', ['$scope','blockService','Popeye',function($scope, 
     $scope.editable = false;
   };
 
+  $scope.deleteBlock = function(block){
+    var index = $scope.blocks.indexOf(block);
+    $scope.blocks.splice(index, 1)
+  }
+
   $scope.deleteImage = function(image){
     var index = $scope.blocks.indexOf(image);
     $scope.blocks.splice(index, 1)
@@ -68,6 +73,13 @@ app.controller('controller', ['$scope','blockService','Popeye',function($scope, 
       templateUrl: "my_modal.html"
     });
   };
+
+  $scope.onDropComplete = function (index, block, evt) {
+                    var otherBlock = $scope.blocks[index];
+                    var otherIndex = $scope.blocks.indexOf(block);
+                    $scope.blocks[index] = block;
+                    $scope.blocks[otherIndex] = otherBlock;
+                };
 
 
 

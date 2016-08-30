@@ -1,1 +1,1 @@
-var app = angular.module('editor', ["pathgather.popeye"]);
+var app = angular.module('editor', ["pathgather.popeye","ngDraggable"]);

@@ -22,6 +22,7 @@ app.service('blockService', [function(){
 
   self.saveImageBlock = function(){
     self.json.push(self.productBlock);
+    self.productArray= [];
 }
 
   self.createImage = function(image){

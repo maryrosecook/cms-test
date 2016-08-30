@@ -22,8 +22,6 @@ app.service('blockService', [function(){
 
   self.saveImageBlock = function(){
     self.json.push(self.productBlock);
-    console.log(self.json);
-    console.log(self.blocks);
 }
 
   self.createImage = function(image){
@@ -34,7 +32,6 @@ app.service('blockService', [function(){
       })
     );
   };
-
 
   self.products = [{
     "id": 167687,

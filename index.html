@@ -46,7 +46,7 @@
     <input class="form-control" placeholder="Title" type="text" ng-model="titleText"/>
     <input class="form-control" placeholder="Main Body" type="text" ng-model="bodyText"/>
     <button class="btn btn-primary" ng-click="addTextBlock(); showTextInput()">   Add Text  </button>
-    <button class="btn btn-primary" ng-click="showTextInput()">   Cancel  </button><br>
+    <button class="btn btn-danger" ng-click="showTextInput()">   Cancel  </button><br>
 
   </form>
 
@@ -55,7 +55,7 @@
   <form class="form-group" ng-show="editable">
     <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
     <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
-    <button class="btn btn-primary" ng-click="saveBlock()">   Save  </button>
+    <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
   </form>
 
     <!-- Add Blocks -->
@@ -67,7 +67,8 @@
   <!-- Image Blocks -->
 <div class="container" style="max-width: 600px;">
   <div ng-show="imageSelection" class="col-xs-12 col-md-8">
-    <button class="btn btn-primary" ng-click="saveImageBlock(); showImageSelection()">Done</button>
+    <button class="btn btn-success" ng-click="saveImageBlock(); showImageSelection()">Done</button>
+    <a class="btn btn-danger" ng-click="showImageSelection()"> Cancel</a>
     <hr>
     <div class="row">
       <div class="col-xs-6 col-md-6" ng-repeat="product in allProducts">

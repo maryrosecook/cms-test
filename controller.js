@@ -14,7 +14,7 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   };
 
   $scope.addImage = function(image){
-    blockService.addImage(image);
+    blockService.createImage(image);
   };
 
   $scope.editBlock = function(block){
@@ -23,9 +23,14 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   };
 
   $scope.saveBlock = function(){
-  $scope.textBlock = {};
-  $scope.editable = false;
-}
+    $scope.textBlock = {};
+    $scope.editable = false;
+  }
+
+  $scope.deleteImage = function(image){
+    var index = $scope.blocks.indexOf(image);
+    $scope.blocks.splice(index, 1)
+  }
 
   $scope.saveImageBlock = function(){
     blockService.saveImageBlock();
@@ -51,4 +56,4 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
 
 
 
- }]);
+}]);

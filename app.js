@@ -1,1 +1,1 @@
-var app = angular.module('editor', []);
+var app = angular.module('editor', ["pathgather.popeye"]);

@@ -1,10 +1,10 @@
 <head>
-  <title>To Do List</title>
+  <title>Article Editor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="bower_components/angular-popeye/release/popeye.js"></script>
+  <link rel="stylesheet" href="bower_components/angular-popeye/release/popeye.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <script src="app.js"></script>
   <script src="blockService.js"></script>
   <script src="controller.js"></script>
@@ -18,18 +18,18 @@
   <!-- Content -->
   <div class="container" style="max-width: 600px;">
     <div ng-repeat="block in blocks" class="text-muted">
-      <div class="row" ng-show="textBlock(block)">
+      <div class="row" ng-show="textBlock(block)" ng-click="showEditButtons()">
         <h4> {{ block.title }} </h4>
         <p> {{ block.body }} </p>
-        <button class="btn btn-default" ng-click="editBlock(block)">Edit!</button>
+        <button class="btn btn-default" ng-show="showButtons"  ng-click="editBlock(block)">Edit!</button>
         <br>
       </div>
-      <div ng-show="!textBlock(block)" class="col-xs-6">
-        <div class="row">
+      <div ng-show="!textBlock(block)"class="col-xs-6">
+        <div class="row" ng-click="showEditButtons()">
           <img src="{{block[0].image}}" style="max-height:300px;"  class="img-responsive">
           <h4> {{ block[0].retailer }} </h4>
           <h5> {{ block[0].price }} </h5>
-          <button class="btn btn-default" ng-click="deleteImage(block)">Delete!</button>
+          <button class="btn btn-default" ng-show="showButtons" ng-click="deleteImage(block)">Delete!</button>
           <br>
         </div>
       </div>
@@ -63,7 +63,7 @@
   <!-- Image Blocks -->
 
   <div ng-show="imageSelection" class="col-xs-12 col-md-8">
-    <button ng-click="saveImageBlock(); showImageSelection()">Done</button>
+    <button class="btn btn-primary" ng-click="saveImageBlock(); showImageSelection()">Done</button>
     <div class="row">
       <div class="col-xs-6 col-md-6" ng-repeat="product in allProducts">
         <button ng-click="addImage(product.id)">
@@ -81,6 +81,22 @@
     {{ json}}
   </div>
 
+  <!-- <button ng-click="openModal()"> Open Modal</button>
+  <script ng-app="editor" ng-controller="controller" type="text/ng-template" id="my_modal.html">
+    <div class="popeye-modal-container">
+    <div class="popeye-modal">
+      <a class="popeye-close-modal" href ng-click="$close()"></a> -->
 
+      <!-- Edit Block -->
+      <!-- <form class="form-group" ng-show="editable">
+        <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
+        <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
+        <button class="btn btn-primary" ng-click="saveBlock()">   Save  </button>
+      </form>
+    </div>
+  </div>
+  </script> -->
 </body>
+
+
 <!-- /.container -->

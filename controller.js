@@ -8,6 +8,7 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.showBlock = false;
   $scope.imageSelection = false;
   $scope.editable = false;
+  $scope.showButtons = false;
 
   $scope.addTextBlock = function(){
     blockService.addTextBlock($scope.titleText,$scope.bodyText);
@@ -20,6 +21,12 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.editBlock = function(block){
     $scope.editable = true;
     $scope.textBlock = block;
+  };
+
+  $scope.openModal = function(){
+    var modal = Popeye.openModal({
+      templateUrl: "my_modal.html"
+    });
   };
 
   $scope.saveBlock = function(){
@@ -52,6 +59,12 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
     if(block.type === "text"){
       return true
     } else {return false};
+  };
+
+  $scope.showEditButtons = function(){
+    if ($scope.showButtons === false){
+      $scope.showButtons = true;
+    } else {$scope.showButtons = false};
   };
 
 

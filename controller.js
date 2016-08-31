@@ -1,4 +1,4 @@
-app.controller('controller', ['$scope','blockService','jsonService',function($scope, blockService, jsonService){
+app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonService',function($scope, $uibModal, $log, blockService, jsonService){
   $scope.test = blockService.test;
   $scope.finalArticle = blockService.finalArticle;
   $scope.allProducts = blockService.products;
@@ -9,6 +9,7 @@ app.controller('controller', ['$scope','blockService','jsonService',function($sc
   $scope.imageSelection = false;
   $scope.editable = false;
   $scope.showButtons = false;
+  $scope.block = [];
 
   $scope.createTextBlock = function(){
     if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; };
@@ -23,15 +24,15 @@ app.controller('controller', ['$scope','blockService','jsonService',function($sc
     jsonService.createImage(image);
   };
 
-  $scope.editBlock = function(block){
-    $scope.editable = true;
-    $scope.textBlock = block;
-  };
+  // $scope.editBlock = function(block){
+  //   $scope.editable = true;
+  //   $scope.textBlock = block;
+  // };
 
-  $scope.saveBlock = function(){
-    $scope.textBlock = {};
-    $scope.editable = false;
-  };
+  // $scope.saveBlock = function(){
+  //   $scope.block = {};
+  //   $scope.editable = false;
+  // };
 
   $scope.deleteBlock = function(block){
     var index = $scope.blocks.indexOf(block);
@@ -78,11 +79,59 @@ app.controller('controller', ['$scope','blockService','jsonService',function($sc
   };
 
   $scope.onDropComplete = function (index, block, evt) {
-                    var otherBlock = $scope.blocks[index];
-                    var otherIndex = $scope.blocks.indexOf(block);
-                    $scope.blocks[index] = block;
-                    $scope.blocks[otherIndex] = otherBlock;
-                };
+    var otherBlock = $scope.blocks[index];
+    var otherIndex = $scope.blocks.indexOf(block);
+    $scope.blocks[index] = block;
+    $scope.blocks[otherIndex] = otherBlock;
+  };
+
+  //modal
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.animationsEnabled = true;
+
+  $scope.modalUpdate = function (selectedBlock) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: function($scope, $uibModalInstance, block){
+        $scope.block = block;
+        $scope.saveBlock = function () {
+          $uibModalInstance.close($scope.block);
+        };
+
+        $scope.cancel = function () {
+          $uibModalInstance.dismiss('cancel');
+        };
+      },
+      size: 'sm',
+      resolve: {
+        block: function () {
+          return selectedBlock;
+        }
+      }
+    });
+
+    $scope.saveBlock = function () {
+      $uibModalInstance.close($scope.block);
+      $scope.block = {};
+    };
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 
 
 

@@ -45,7 +45,7 @@
   <!-- Add Block -->
   <form class="form-group" ng-show="textInput">
     <input class="form-control" placeholder="Title" type="text" ng-model="titleText"/>
-    <input class="form-control" placeholder="Main Body" type="text" ng-model="bodyText"/>
+    <textarea class="form-control" rows="3" placeholder="Main Body" type="text" ng-model="bodyText"></textarea>
     <button class="btn btn-primary" ng-click="createTextBlock(); showTextInput()">   Add Text  </button>
     <button class="btn btn-danger" ng-click="showTextInput()">   Cancel  </button><br>
 
@@ -55,7 +55,7 @@
   <!-- Edit Block -->
   <form class="form-group" ng-show="editable">
     <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
-    <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
+    <textarea class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"></textarea>
     <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
   </form>
 

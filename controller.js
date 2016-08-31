@@ -36,7 +36,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   $scope.deleteTextBlock = function(block){
     var index = $scope.json.indexOf(block);
     $scope.json.splice(index, 1);
-    $scope.updateBlocks($scope.json);    
+    $scope.updateBlocks($scope.json);
   }
 
   $scope.deleteImage = function(image){
@@ -73,10 +73,11 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   };
 
   $scope.onDropComplete = function (index, block, evt) {
-    var otherBlock = $scope.blocks[index];
-    var otherIndex = $scope.blocks.indexOf(block);
-    $scope.blocks[index] = block;
-    $scope.blocks[otherIndex] = otherBlock;
+    var otherBlock = $scope.json[index];
+    var otherIndex = $scope.json.indexOf(block);
+    $scope.json[index] = block;
+    $scope.json[otherIndex] = otherBlock;
+    $scope.updateBlocks($scope.json);
   };
 
   //modal

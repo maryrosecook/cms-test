@@ -101,14 +101,12 @@
     </div>
     <div class="modal-body">
       <form class="form-group">
-        <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
-        <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
+        <input class="form-control" placeholder="Title" type="text" ng-model="block.title" ng-model="titleText"/>
+        <input class="form-control" placeholder="Main Body" type="text" ng-model="block.body" ng-model="bodyText"/>
         <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
       </form>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
   </script>
 

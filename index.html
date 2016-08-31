@@ -24,7 +24,7 @@
       <div class="row" ng-show="textBlock(block)" ng-click="showEditButtons()" ng-drag="true" ng-drag-data="block">
         <h4> {{ block.title }} </h4>
         <p> {{ block.body }} </p>
-        <button class="btn btn-default" ng-show="showButtons"  ng-click="editBlock(block)">Edit!</button>
+        <button class="btn btn-default" ng-show="showButtons"  ng-click="editBlock(block); modalUpdate(block)">Edit!</button>
         <button class="btn btn-default" ng-show="showButtons" ng-click="deleteBlock(block)">Delete!</button><br>
         <br>
       </div>
@@ -54,11 +54,13 @@
 
 
   <!-- Edit Block -->
-  <form class="form-group" ng-show="editable">
+
+  <!-- <form class="form-group" ng-show="editable">
     <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
-    <textarea class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"></textarea>
+    <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
     <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
-  </form>
+  </form> -->
+
 
   <!-- Add Blocks -->
 
@@ -94,21 +96,20 @@
 
 
   <script type="text/ng-template" id="myModalContent.html">
-      <div class="modal-header">
-          <h3 class="modal-title">I'm a modal!</h3>
-      </div>
-      <div class="modal-body">
-          <ul>
-              <li ng-repeat="item in items">
-                  <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-              </li>
-          </ul>
-          Selected: <b>{{ selected.item }}</b>
-      </div>
-      <div class="modal-footer">
-          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-      </div>
+    <div class="modal-header">
+      <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+      <form class="form-group">
+        <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
+        <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
+        <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
   </script>
 
   <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>

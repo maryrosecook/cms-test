@@ -1,12 +1,9 @@
-app.controller('modalInstanceCtrl',['$scope','$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('modalInstanceCtrl',['$scope','$uibModalInstance', function ($scope, $uibModalInstance, block) {
 
-  $scope.items = ['item1', 'item2', 'item3'];
-  $scope.selected = {
-    item: $scope.items[0]
-  };
+  $scope.block = block;
 
   $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
+    $uibModalInstance.close($scope.block);
   };
 
   $scope.cancel = function () {

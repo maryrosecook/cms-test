@@ -89,16 +89,16 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
 
   $scope.animationsEnabled = true;
 
-  $scope.open = function (size) {
+  $scope.modalUpdate = function (block) {
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
       controller: 'modalInstanceCtrl',
-      size: size,
+      size: 'sm',
       resolve: {
-        items: function () {
-          return $scope.items;
+        block: function () {
+          return block;
         }
       }
     });

@@ -1,4 +1,4 @@
-app.controller('controller', ['$scope','blockService','jsonService',function($scope, blockService, jsonService){
+app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonService',function($scope, $uibModal, $log, blockService, jsonService){
   $scope.test = blockService.test;
   $scope.finalArticle = blockService.finalArticle;
   $scope.allProducts = blockService.products;
@@ -78,11 +78,41 @@ app.controller('controller', ['$scope','blockService','jsonService',function($sc
   };
 
   $scope.onDropComplete = function (index, block, evt) {
-                    var otherBlock = $scope.blocks[index];
-                    var otherIndex = $scope.blocks.indexOf(block);
-                    $scope.blocks[index] = block;
-                    $scope.blocks[otherIndex] = otherBlock;
-                };
+    var otherBlock = $scope.blocks[index];
+    var otherIndex = $scope.blocks.indexOf(block);
+    $scope.blocks[index] = block;
+    $scope.blocks[otherIndex] = otherBlock;
+  };
+
+  //modal
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'modalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 
 
 

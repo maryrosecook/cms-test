@@ -1,4 +1,4 @@
-app.controller('controller', ['$scope','blockService','Popeye',function($scope, blockService, Popeye){
+app.controller('controller', ['$scope','blockService',function($scope, blockService){
   $scope.test = blockService.test;
   $scope.finalArticle = blockService.finalArticle;
   $scope.allProducts = blockService.products;
@@ -11,6 +11,7 @@ app.controller('controller', ['$scope','blockService','Popeye',function($scope, 
   $scope.showButtons = false;
 
   $scope.addTextBlock = function(){
+    if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; }
     blockService.addTextBlock($scope.titleText,$scope.bodyText);
     $scope.titleText = '';
     $scope.bodyText = '';

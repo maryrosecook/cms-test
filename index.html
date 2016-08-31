@@ -9,7 +9,6 @@
   <script src="app.js"></script>
   <script src="blockService.js"></script>
   <script src="jsonService.js"></script>
-  <script src="modalInstanceCtrl.js"></script>
   <script src="controller.js"></script>
 </head>
 
@@ -20,7 +19,7 @@
 
   <!-- Content -->
   <div class="container" style="max-width: 600px;">
-    <div ng-repeat="block in blocks" class="text-muted" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+    <div ng-repeat="block in blocks" class="text-muted" ng-drop="true" ng-drop-success="onDropComplete($index, $data ,$event)">
       <div class="row" ng-show="textBlock(block)" ng-click="showEditButtons()" ng-drag="true" ng-drag-data="block">
         <h4> {{ block.title }} </h4>
         <p> {{ block.body }} </p>
@@ -51,16 +50,6 @@
     <button class="btn btn-danger" ng-click="showTextInput()">   Cancel  </button><br>
 
   </form>
-
-
-  <!-- Edit Block -->
-
-  <!-- <form class="form-group" ng-show="editable">
-    <input class="form-control" placeholder="Title" type="text" ng-model="textBlock.title" ng-model="titleText"/>
-    <input class="form-control" placeholder="Main Body" type="text" ng-model="textBlock.body" ng-model="bodyText"/>
-    <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
-  </form> -->
-
 
   <!-- Add Blocks -->
 
@@ -103,9 +92,8 @@
       <form class="form-group">
         <input class="form-control" placeholder="Title" type="text" ng-model="block.title" ng-model="titleText"/>
         <input class="form-control" placeholder="Main Body" type="text" ng-model="block.body" ng-model="bodyText"/>
-        <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-
+        <button class="btn btn-success" type="submit" ng-click="saveBlock()">   Save  </button>
+        <button class="btn btn-warning" type="button" ng-click="cancel(block)">Cancel</button>
       </form>
     </div>
   </script>

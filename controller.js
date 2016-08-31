@@ -1,6 +1,5 @@
 app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonService',function($scope, $uibModal, $log, blockService, jsonService){
-  $scope.test = blockService.test;
-  $scope.finalArticle = blockService.finalArticle;
+
   $scope.allProducts = blockService.products;
   $scope.json = jsonService.json;
   $scope.blocks = blockService.blocks;
@@ -9,7 +8,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   $scope.imageSelection = false;
   $scope.editable = false;
   $scope.showButtons = false;
-  $scope.block = [];
+
 
   $scope.createTextBlock = function(){
     if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; };
@@ -62,6 +61,12 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     } else {$scope.showButtons = false};
   };
 
+  $scope.openModal = function(){
+    var modal = Popeye.openModal({
+      templateUrl: "my_modal.html"
+    });
+  };
+
   $scope.onDropComplete = function (index, block, evt) {
     var otherBlock = $scope.blocks[index];
     var otherIndex = $scope.blocks.indexOf(block);
@@ -78,29 +83,32 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
+
       controller: function($scope, $uibModalInstance, block){
+        $scope.backUp = angular.copy(block);
         $scope.block = block;
+
+        $scope.saveBlock = function () {
+          $uibModalInstance.close($scope.block);
+        };
+
+        $scope.cancel = function (block) {
+          block = $scope.backUp;
+          $uibModalInstance.dismiss('cancel');
+        };
       },
-      size: 'lg',
+      size: 'sm',
       resolve: {
         block: function () {
           return selectedBlock;
         }
       }
     });
-
-  $scope.saveBlock = function () {
-    $uibModalInstance.close($scope.block);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
   };
 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
-
 
 
 }]);

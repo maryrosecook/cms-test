@@ -21,7 +21,6 @@ app.service('blockService', [function(){
         }));
       })} else {self.blocks.push(json[i])};
     };
-    console.log(self.blocks);
   };
 
 self.products = [{

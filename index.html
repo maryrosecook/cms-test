@@ -24,7 +24,7 @@
         <h4> {{ block.title }} </h4>
         <p> {{ block.body }} </p>
         <button class="btn btn-default" ng-show="showButtons"  ng-click="editBlock(block); modalUpdate(block)">Edit!</button>
-        <button class="btn btn-default" ng-show="showButtons" ng-click="deleteBlock(block)">Delete!</button><br>
+        <button class="btn btn-default" ng-show="showButtons" ng-click="deleteTextBlock(block)">Delete!</button><br>
         <br>
       </div>
       <div ng-show="!textBlock(block)"class="col-xs-6" ng-drag="true" ng-drag-data="block">

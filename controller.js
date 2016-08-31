@@ -24,7 +24,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
 
   $scope.createProductBlock = function(){
     jsonService.createProductBlock();
-    blockService.updateBlocks($scope.json);
+    $scope.updateBlocks($scope.json);
   };
 
   $scope.showProductSelection = function(){
@@ -33,9 +33,10 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     } else {$scope.productSelection = false};
   };
 
-  $scope.deleteBlock = function(block){
-    var index = $scope.blocks.indexOf(block);
-    $scope.blocks.splice(index, 1)
+  $scope.deleteTextBlock = function(block){
+    var index = $scope.json.indexOf(block);
+    $scope.json.splice(index, 1);
+    $scope.updateBlocks($scope.json);    
   }
 
   $scope.deleteImage = function(image){

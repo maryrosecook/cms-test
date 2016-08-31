@@ -5,7 +5,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   $scope.blocks = blockService.blocks;
   $scope.textInput = false;
   $scope.showBlock = false;
-  $scope.imageSelection = false;
+  $scope.productSelection = false;
   $scope.editable = false;
   $scope.showButtons = false;
 
@@ -18,9 +18,18 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     $scope.bodyText = '';
   };
 
-  $scope.addImage = function(image){
-    blockService.createImage(image);
-    jsonService.createImage(image);
+  $scope.addProduct = function(product){
+    jsonService.addProduct(product);
+  };
+
+  $scope.createProductBlock = function(){
+    jsonService.createProductBlock();
+  };
+
+  $scope.showProductSelection = function(){
+    if ($scope.productSelection === false){
+      $scope.productSelection = true;
+    } else {$scope.productSelection = false};
   };
 
   $scope.deleteBlock = function(block){
@@ -33,9 +42,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     $scope.blocks.splice(index, 1)
   };
 
-  $scope.saveImageBlock = function(){
-    jsonService.saveImageBlock();
-  };
+
 
   $scope.showTextInput = function(){
     if ($scope.textInput === false){
@@ -43,11 +50,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     } else {$scope.textInput = false};
   };
 
-  $scope.showImageSelection = function(){
-    if ($scope.imageSelection === false){
-      $scope.imageSelection = true;
-    } else {$scope.imageSelection = false};
-  };
+
 
   $scope.textBlock = function(block){
     if(block.type === "text"){

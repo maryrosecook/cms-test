@@ -54,18 +54,18 @@
   <!-- Add Blocks -->
 
   <a class="btn btn-primary" ng-click="showTextInput()">Text Block</a>
-  <a class="btn btn-success" ng-click="showImageSelection()">Products Block</a>
+  <a class="btn btn-success" ng-click="showProductSelection()">Products Block</a>
   <hr>
 
   <!-- Image Blocks -->
   <div class="container" style="max-width: 600px;">
-    <div ng-show="imageSelection" class="col-xs-12 col-md-8">
-      <button class="btn btn-success" ng-click="saveImageBlock(); showImageSelection()">Done</button>
+    <div ng-show="productSelection" class="col-xs-12 col-md-8">
+      <button class="btn btn-success" ng-click="createProductBlock(); showProductSelection()">Done</button>
       <a class="btn btn-danger" ng-click="showImageSelection()"> Cancel</a>
       <hr>
       <div class="row">
         <div class="col-xs-6 col-md-6" ng-repeat="product in allProducts">
-          <button ng-click="addImage(product.id)">
+          <button ng-click="addProduct(product.id)">
             <img src="{{product.image}}" style="max-height:300px;"  class="img-responsive">
             <p>{{product.title}}</p>
             <p>&pound{{product.price}}</p>

@@ -14,12 +14,12 @@ var self = this;
     });
   };
 
-  self.saveImageBlock = function(){
+  self.createProductBlock = function(){
     self.json.push(self.productBlock);
     self.productArray= [];
 }
 
-  self.createImage = function(image){
-    self.productArray.push(image);
+  self.addProduct = function(product){
+    self.productArray.push(product);
   };
 }]);

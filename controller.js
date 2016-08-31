@@ -92,12 +92,12 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
           $uibModalInstance.close($scope.block);
         };
 
-        $scope.cancel = function (block) {
+        $scope.cancel = function () {
           block = $scope.backUp;
           $uibModalInstance.dismiss('cancel');
         };
       },
-      size: 'sm',
+      size: 'lg',
       resolve: {
         block: function () {
           return selectedBlock;

@@ -24,16 +24,6 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     jsonService.createImage(image);
   };
 
-  // $scope.editBlock = function(block){
-  //   $scope.editable = true;
-  //   $scope.textBlock = block;
-  // };
-
-  // $scope.saveBlock = function(){
-  //   $scope.block = {};
-  //   $scope.editable = false;
-  // };
-
   $scope.deleteBlock = function(block){
     var index = $scope.blocks.indexOf(block);
     $scope.blocks.splice(index, 1)
@@ -72,12 +62,6 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     } else {$scope.showButtons = false};
   };
 
-  $scope.openModal = function(){
-    var modal = Popeye.openModal({
-      templateUrl: "my_modal.html"
-    });
-  };
-
   $scope.onDropComplete = function (index, block, evt) {
     var otherBlock = $scope.blocks[index];
     var otherIndex = $scope.blocks.indexOf(block);
@@ -86,7 +70,6 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   };
 
   //modal
-  $scope.items = ['item1', 'item2', 'item3'];
 
   $scope.animationsEnabled = true;
 
@@ -97,15 +80,8 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
       templateUrl: 'myModalContent.html',
       controller: function($scope, $uibModalInstance, block){
         $scope.block = block;
-        $scope.saveBlock = function () {
-          $uibModalInstance.close($scope.block);
-        };
-
-        $scope.cancel = function () {
-          $uibModalInstance.dismiss('cancel');
-        };
       },
-      size: 'sm',
+      size: 'lg',
       resolve: {
         block: function () {
           return selectedBlock;
@@ -113,20 +89,12 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
       }
     });
 
-    $scope.saveBlock = function () {
-      $uibModalInstance.close($scope.block);
-      $scope.block = {};
-    };
+  $scope.saveBlock = function () {
+    $uibModalInstance.close($scope.block);
+  };
 
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    };
-
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
   };
 
   $scope.toggleAnimation = function () {

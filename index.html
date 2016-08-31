@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="app.js"></script>
   <script src="blockService.js"></script>
+  <script src="jsonService.js"></script>
   <script src="controller.js"></script>
 </head>
 
@@ -45,7 +46,7 @@
   <form class="form-group" ng-show="textInput">
     <input class="form-control" placeholder="Title" type="text" ng-model="titleText"/>
     <input class="form-control" placeholder="Main Body" type="text" ng-model="bodyText"/>
-    <button class="btn btn-primary" ng-click="addTextBlock(); showTextInput()">   Add Text  </button>
+    <button class="btn btn-primary" ng-click="createTextBlock(); showTextInput()">   Add Text  </button>
     <button class="btn btn-danger" ng-click="showTextInput()">   Cancel  </button><br>
 
   </form>

@@ -1,8 +1,8 @@
-app.controller('controller', ['$scope','blockService',function($scope, blockService){
+app.controller('controller', ['$scope','blockService','jsonService',function($scope, blockService, jsonService){
   $scope.test = blockService.test;
   $scope.finalArticle = blockService.finalArticle;
   $scope.allProducts = blockService.products;
-  $scope.json = blockService.json;
+  $scope.json = jsonService.json;
   $scope.blocks = blockService.blocks;
   $scope.textInput = false;
   $scope.showBlock = false;
@@ -10,15 +10,17 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   $scope.editable = false;
   $scope.showButtons = false;
 
-  $scope.addTextBlock = function(){
-    if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; }
-    blockService.addTextBlock($scope.titleText,$scope.bodyText);
+  $scope.createTextBlock = function(){
+    if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; };
+    blockService.createTextBlock($scope.titleText,$scope.bodyText);
+    jsonService.createTextBlock($scope.titleText,$scope.bodyText);
     $scope.titleText = '';
     $scope.bodyText = '';
   };
 
   $scope.addImage = function(image){
     blockService.createImage(image);
+    jsonService.createImage(image);
   };
 
   $scope.editBlock = function(block){
@@ -42,7 +44,7 @@ app.controller('controller', ['$scope','blockService',function($scope, blockServ
   };
 
   $scope.saveImageBlock = function(){
-    blockService.saveImageBlock();
+    jsonService.saveImageBlock();
   };
 
   $scope.showTextInput = function(){

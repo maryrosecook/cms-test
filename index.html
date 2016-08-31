@@ -90,10 +90,10 @@
     </div>
     <div class="modal-body">
       <form class="form-group">
-        <input class="form-control" placeholder="Title" type="text" ng-model="block.title" ng-model="titleText"/>
-        <textarea class="form-control" placeholder="Main Body" type="text" ng-model="block.body" ng-model="bodyText"></textarea>
-        <button class="btn btn-success" type="submit" ng-click="saveBlock()">   Save  </button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <input class="form-control" placeholder="Title" type="text" ng-model="data.title"/>
+        <textarea class="form-control" placeholder="Main Body" type="text" ng-model="data.body"></textarea>
+        <button class="btn btn-success" ng-click="saveBlock()">   Save  </button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
       </form>
     </div>
   </script>

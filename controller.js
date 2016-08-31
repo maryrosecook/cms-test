@@ -85,19 +85,21 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
       templateUrl: 'myModalContent.html',
 
       controller: function($scope, $uibModalInstance, block){
-        $scope.backUp = angular.copy(block);
-        $scope.block = block;
+        $scope.data = {};
+        $scope.data.title = block.title;
+        $scope.data.body = block.body;
 
         $scope.saveBlock = function () {
+          block.title = $scope.data.title;
+          block.body = $scope.data.body;
           $uibModalInstance.close($scope.block);
         };
 
         $scope.cancel = function () {
-          block = $scope.backUp;
           $uibModalInstance.dismiss('cancel');
         };
       },
-      size: 'lg',
+      size: 'sm',
       resolve: {
         block: function () {
           return selectedBlock;

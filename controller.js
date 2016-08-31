@@ -12,8 +12,8 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
 
   $scope.createTextBlock = function(){
     if((!$scope.titleText || $scope.titleText === '') && (!$scope.bodyText || $scope.bodyText === '')) { return; };
-    blockService.createTextBlock($scope.titleText,$scope.bodyText);
     jsonService.createTextBlock($scope.titleText,$scope.bodyText);
+    $scope.updateBlocks($scope.json);
     $scope.titleText = '';
     $scope.bodyText = '';
   };
@@ -24,6 +24,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
 
   $scope.createProductBlock = function(){
     jsonService.createProductBlock();
+    blockService.updateBlocks($scope.json);
   };
 
   $scope.showProductSelection = function(){
@@ -113,6 +114,11 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+  $scope.updateBlocks = function(json){
+    blockService.updateBlocks(json);
+    $scope.blocks = blockService.blocks;
   };
 
 

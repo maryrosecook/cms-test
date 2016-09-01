@@ -1,4 +1,4 @@
-app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonService',function($scope, $uibModal, $log, blockService, jsonService){
+app.controller('mainCtrl', ['$scope','$uibModal','$log','blockService','jsonService',function($scope, $uibModal, $log, blockService, jsonService){
 
   $scope.allProducts = blockService.products;
   $scope.json = jsonService.json;
@@ -92,21 +92,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
 
-      controller: function($scope, $uibModalInstance, block){
-        $scope.data = {};
-        $scope.data.title = block.title;
-        $scope.data.body = block.body;
-
-        $scope.saveBlock = function () {
-          block.title = $scope.data.title;
-          block.body = $scope.data.body;
-          $uibModalInstance.close($scope.block);
-        };
-
-        $scope.cancel = function () {
-          $uibModalInstance.dismiss('cancel');
-        };
-      },
+      controller:'modalInstanceCtrl',
       size: 'lg',
       resolve: {
         block: function () {

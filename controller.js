@@ -23,6 +23,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
   };
 
   $scope.createProductBlock = function(){
+    if (jsonService.productArray.length < 1) {return; };
     jsonService.createProductBlock();
     $scope.updateBlocks($scope.json);
   };

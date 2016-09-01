@@ -27,7 +27,7 @@
         <button class="btn btn-default" ng-show="showButtons" ng-click="deleteTextBlock(block)">Delete!</button><br>
         <br>
       </div>
-      <div ng-show="!textBlock(block)"class="col-xs-6" ng-drag="true" ng-drag-data="block">
+      <div ng-show="!textBlock(block)"class="col-xs-6">
         <div class="row" ng-click="showEditButtons()">
           <img src="{{block[0].image}}" style="max-height:300px;"  class="img-responsive">
           <h4> {{ block[0].retailer }} </h4>

@@ -39,20 +39,16 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     $scope.updateBlocks($scope.json);
   }
 
-  $scope.deleteImage = function(image){
-    var index = $scope.blocks.indexOf(image);
-    $scope.blocks.splice(index, 1)
+  $scope.deleteProduct = function(product){
+    jsonService.deleteProduct(product);
+    $scope.updateBlocks($scope.json);
   };
-
-
 
   $scope.showTextInput = function(){
     if ($scope.textInput === false){
       $scope.textInput = true;
     } else {$scope.textInput = false};
   };
-
-
 
   $scope.textBlock = function(block){
     if(block.type === "text"){
@@ -105,7 +101,7 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
           $uibModalInstance.dismiss('cancel');
         };
       },
-      size: 'sm',
+      size: 'lg',
       resolve: {
         block: function () {
           return selectedBlock;

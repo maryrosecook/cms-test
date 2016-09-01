@@ -20,7 +20,6 @@ var self = this;
 
   self.addProduct = function(product){
     self.productArray.push(product);
-    console.log(self.productArray);
   };
 
   self.deleteProduct = function(product){

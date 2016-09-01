@@ -34,6 +34,11 @@ app.controller('controller', ['$scope','$uibModal','$log','blockService','jsonSe
     } else {$scope.productSelection = false};
   };
 
+  $scope.cancelProductBlock = function(){
+    jsonService.productArray = [];
+    $scope.productSelection = false;
+  };
+
   $scope.deleteTextBlock = function(block){
     var index = $scope.json.indexOf(block);
     $scope.json.splice(index, 1);
